@@ -1,51 +1,31 @@
-import React, { useState } from "react";
-import ShowComment from "./ShowComment";
-import Sort from "../components/Sort"
-export default function Comment({ comments, onDelete , setSortBtn,sortBtn}) {
-  const [searchedTxt, setSearchedTxt] = useState("");
- 
-  const  searchComment = comments.filter((comment) => {
-    if (searchedTxt === "") return true;   
-   
-    return (
-      comment.user.toLowerCase().indexOf(searchedTxt.toLocaleLowerCase()) !== -1
-    );
-  });
-
-
+import React,{useState} from "react";
+import VideoLikeDisLike from "./LikeDisLike";
+export default function ShowComment({
+  user,
+  comment,
+  onDelete,
+  like,
+  disLike,
+  id
+}) {
+  const [commentLike, setCommentLike] = useState(like);
+  const [commentDisLike, setCommentDisLike] = useState(disLike);
   
- 
+  function handleDeleteComment() {
+    onDelete(id);
+  }
   return (
     <div>
-      <hr />
-      <input
-        onChange={(e) => setSearchedTxt(e.target.value)}
-        value={searchedTxt}
-        placeholder="Search comments by user"
+      <h2>{user}</h2>
+      <p>{comment}</p>
+
+      <VideoLikeDisLike
+        like={commentLike}
+        setLike={setCommentLike}
+        disLike={commentDisLike}
+        setDisLike={setCommentDisLike}
       />
-
-      
-      <button onClick={()=> setSortBtn(true)} >Sort by Like</button>
-      {searchComment.map((comment) => (
-        
-        <ShowComment
-          key={comment.id}
-          id={comment.id}
-          user={comment.user}
-          comment={comment.comment}
-          onDelete={onDelete}
-          like={comment.like}
-          disLike={comment.disLike}
-        />
-      ))
-      
-      
-       }
-      
-       
-
-      
-
+      <button onClick={handleDeleteComment} >Delete Comment</button>
     </div>
   );
 }

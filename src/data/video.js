@@ -26,8 +26,15 @@ const video = {
     {
       id: 3,
       user: "Lala",
-      comment: "What a great tutorial!",
+      comment: "Finally",
       like:1,
+      disLike:0
+    },
+    {
+      id: 4,
+      user: "LaRa",
+      comment: "Finally",
+      like:40,
       disLike:0
     }
   ],

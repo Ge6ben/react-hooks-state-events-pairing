@@ -1,4 +1,4 @@
-import React,{useState}from "react";
+import React, { useState } from "react";
 import LikeDisLike from "./LikeDisLike";
 export default function Video({
   embedUrl,
@@ -7,17 +7,13 @@ export default function Video({
   createdAt,
   upvotes,
   downvotes,
-  
+  setToggleComment,
+  toggleComment,
 }) {
-
-
-    const [like, setLike] = useState(upvotes);
-    const [disLike, setDisLike] = useState(downvotes);
+  const [like, setLike] = useState(upvotes);
+  const [disLike, setDisLike] = useState(downvotes);
 
   return (
-
-    
-    
     <div className="App">
       <iframe
         width="919"
@@ -35,9 +31,16 @@ export default function Video({
       </p>
       <br />
 
-      <LikeDisLike like={like} setLike={setLike}  disLike={disLike} setDisLike={setDisLike} />
+      <LikeDisLike
+        like={like}
+        setLike={setLike}
+        setDisLike={setDisLike}
+        disLike={disLike}
+      />
 
-     
+      <button onClick={() => setToggleComment(true)}>
+        {toggleComment ? "Hide Comments" : "Show Comments"}
+      </button>
     </div>
   );
 }
