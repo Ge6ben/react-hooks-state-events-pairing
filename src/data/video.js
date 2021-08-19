@@ -6,18 +6,58 @@ const video = {
   createdAt: "Oct 26, 2018",
   upvotes: 9210,
   downvotes: 185,
+
   comments: [
     {
       id: 1,
       user: "duanebot",
       comment: "first!",
+      like:20,
+      disLike:0
     },
     {
       id: 2,
       user: "gaeron",
       comment: "What a great tutorial!",
+      like:10,
+      disLike:0
     },
+
+    {
+      id: 3,
+      user: "Lala",
+      comment: "What a great tutorial!",
+      like:1,
+      disLike:0
+    }
   ],
 };
 
+ 
 export default video;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// const comments = video.comments;
+// export { video as default  , comments } 
